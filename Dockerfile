@@ -17,7 +17,7 @@ RUN chmod +x /run.sh \
 	&& cd /root/libgcrypt-1.8.2 && ./configure && make && make install \
 	&& mkdir -p /root/db-6.2.32/out && cd /root/db-6.2.32/out && ../dist/configure --prefix=/usr/local && make && make install \
 	&& cd /root/netatalk-3.1.11 && ./configure && make && make install \
-	&& cd /root/ && rm -rf db-6.2.32/ libgpg-error-1.29/ libgcrypt-1.8.2/ netatalk-3.1.11/ \
+	&& cd /root/ && rm -rf * \
 	&& apt-get remove gcc g++ make bzip2 -y && apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
 CMD [ "/run.sh" ]
