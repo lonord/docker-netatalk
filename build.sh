@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=1.0
+VERSION=2.0
 
 CWD="$( cd "$( dirname "$0"  )" && pwd  )"
 cd $CWD

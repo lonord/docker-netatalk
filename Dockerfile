@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:16.04
 LABEL maintainer="lonord.b@gmail.com"
 COPY packages/berkeley-db-6.2.32.tar.gz /root/berkeley-db.tar.gz
 COPY packages/libgcrypt-1.8.2.tar.bz2 /root/libgcrypt.tar.bz2
