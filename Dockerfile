@@ -4,8 +4,11 @@ COPY packages/berkeley-db-6.2.32.tar.gz /root/berkeley-db.tar.gz
 COPY packages/libgcrypt-1.8.2.tar.bz2 /root/libgcrypt.tar.bz2
 COPY packages/libgpg-error-1.29.tar.bz2 /root/libgpg-error.tar.bz2
 COPY packages/netatalk-3.1.11.tar.bz2 /root/netatalk.tar.bz2
-COPY scripts/run.sh /run.sh
-RUN chmod +x /run.sh \
+COPY scripts/start.sh /start.sh
+COPY scripts/stop.sh /stop.sh
+COPY bin /tmp_bin
+RUN chmod +x /*.sh \
+	&& cp /tmp_bin/$(arch)/docker-init /docker-init && rm -rf /tmp_bin \
 	&& apt-get update \
 	&& apt-get install -y gcc g++ make bzip2 \
 	&& cd /root \
@@ -20,4 +23,4 @@ RUN chmod +x /run.sh \
 	&& cd /root/ && rm -rf * \
 	&& apt-get remove gcc g++ make bzip2 -y && apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
-CMD [ "/run.sh" ]
+CMD [ "/docker-init", "/start.sh", "/stop.sh" ]

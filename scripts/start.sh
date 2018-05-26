@@ -1,5 +1,5 @@
 #!/bin/bash
 
-netatalk
 touch /var/log/afpd.log
+netatalk
 tail -f /var/log/afpd.log
